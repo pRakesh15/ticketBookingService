@@ -22,7 +22,7 @@ A full-stack application built with Next.js, Node.js (Express), and PostgreSQL f
 
 ### Prerequisites
 
-- Node.js (v14 or later)
+- Node.js (v19 or later)
 - npm or yarn
 - PostgreSQL (v12 or later)
 
@@ -34,7 +34,8 @@ A full-stack application built with Next.js, Node.js (Express), and PostgreSQL f
 createdb train_reservation
 ```
 
-2. Initialize the database schema by executing the SQL script in `server/db/schema.sql` or use the provided schema in this README.
+2. Initialize the database schema by executing the SQL script in `server/data/schema.sql` or use the provided schema in this README.
+3. I'm using a cloud database known as Supabase.
 
 ### Backend Setup
 
@@ -53,13 +54,18 @@ npm install
 3. Create a `.env` file in the server directory with the following variables:
 
 ```
-PORT=5000
-DB_USER=your_db_user
-DB_HOST=localhost
-DB_NAME=train_reservation
-DB_PASSWORD=your_db_password
+port=9898
+
+
+# files for supabase
+DB_USER=postgres.unecgfjkbujmqhctmytn
+DB_HOST=aws-0-ap-south-1.pooler.supabase.com
+DB_NAME=postgres
+DB_PASSWORD=Sidu@1234
 DB_PORT=5432
-JWT_SECRET=your_secret_key
+
+
+JWT_SECRET=Sivani15
 ```
 
 4. Start the server:
@@ -88,7 +94,7 @@ npm install
 npm run dev
 ```
 
-4. Open your browser and navigate to `http://localhost:3000`
+4. Open your browser and navigate to `http://localhost:8989`
 
 ## API Documentation
 
@@ -97,7 +103,7 @@ npm run dev
 #### Register a new user
 
 ```
-POST /api/auth/register
+POST /api/v1/user/register
 ```
 
 Request body:
@@ -125,7 +131,7 @@ Response:
 #### Login
 
 ```
-POST /api/auth/login
+POST /api/v1/user/login
 ```
 
 Request body:
@@ -154,7 +160,7 @@ Response:
 #### Get all seats
 
 ```
-GET /api/seats
+GET api/v1/seat/allSeat
 ```
 
 Response:
@@ -174,7 +180,7 @@ Response:
 #### Get seat recommendations
 
 ```
-POST /api/recommend-seats
+POST /api/v1/seat/bookSeatByRecommendation
 ```
 
 Request body:
@@ -212,7 +218,7 @@ Response:
 #### Create a booking
 
 ```
-POST /api/bookings
+POST /api/v1/seat/bookingSeats
 ```
 
 Request headers:
@@ -244,7 +250,7 @@ Response:
 #### Get user bookings
 
 ```
-GET /api/bookings
+GET /api/v1/seat/getMyBookings
 ```
 
 Request headers:
@@ -268,7 +274,7 @@ Response:
 #### Cancel booking
 
 ```
-POST /api/bookings/:id/cancel
+POST /api/v1/seats/bookings/cancel/:id
 ```
 
 Request headers:
@@ -286,7 +292,7 @@ Response:
 #### Reset all seats (for demo purposes)
 
 ```
-POST /api/reset
+POST /api/v1/seat/reset
 ```
 
 Request headers:
@@ -397,7 +403,7 @@ The algorithm ensures that:
 npm run build
 ```
 
-2. Deploy the built application to Vercel, Netlify, or other Next.js-compatible platforms.
+2. Deploy the built application to Vercel, Netlify, or other Next. Next. js-compatible platforms.
 3. Configure the API base URL to point to your deployed backend.
 
 ## Contributing
